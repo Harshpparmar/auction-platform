@@ -17,7 +17,7 @@ const app = express();
 // middleware
 app.use(express.json());
 app.use(cors({
-    origin: process.env.CLIENT_ORIGIN || "https://auction-platform-nu.vercel.app/",
+    origin: process.env.CLIENT_ORIGIN || "http://localhost:5173",
     credentials: true
 }));
 
