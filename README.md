@@ -87,7 +87,6 @@ npm run dev
 ![Auction Platform Screenshot](/screenshots/1.png)
 ![Auction Platform Screenshot](/screenshots/2.png)
 ![Auction Platform Screenshot](/screenshots/3.png)
-![Auction Platform Screenshot](/screenshots/4.png)
 ![Auction Platform Screenshot](/screenshots/5.png)
 ![Auction Platform Screenshot](/screenshots/6.png)
 
