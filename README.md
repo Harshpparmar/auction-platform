@@ -84,7 +84,12 @@ npm run dev
 
 ### Screenshots
 
-![Auction Platform Screenshot](https://i.imgur.com/1z5Z9kH.png)
+![Auction Platform Screenshot](/client/screenshots/1.png)
+![Auction Platform Screenshot](/client/screenshots/2.png)
+![Auction Platform Screenshot](/client/screenshots/3.png)
+![Auction Platform Screenshot](/client/screenshots/4.png)
+![Auction Platform Screenshot](/client/screenshots/5.png)
+![Auction Platform Screenshot](/client/screenshots/6.png)
 
 
 
