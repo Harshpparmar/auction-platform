@@ -10,7 +10,7 @@ const authMiddleware = (req, res, next) => {
         }
 
         // Verify token
-        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         // Add user info to request
         req.user = decoded;
@@ -18,6 +18,11 @@ const authMiddleware = (req, res, next) => {
         next();
     } catch (error) {
         console.error(error);
+
+        if(error.name === 'TokenExpiredError') {
+            return res.status(401).json({ message: 'Token expired, LOGIN AGAIN' });
+
+        }
         res.status(401).json({ message: 'Invalid token' });
     }
 };

@@ -7,9 +7,21 @@ const createDefaultAdmin = require('./utils/defaultAdmin')
 // loading the env variables
 dotenv.config();
 
-connectDB();
+if (!process.env.JWT_SECRET) {
+    console.error('JWT_SECRET is not defined in .env file');
+    process.exit(1);
+}
 
-createDefaultAdmin()
+
+// createDefaultAdmin()
+connectDB().then(() => {
+    console.log('Connected to MongoDB');
+    return createDefaultAdmin();
+}).then( () => {
+    console.log('Default admin created successfully');
+}).catch((error) => {
+    console.error('Error during startup:', error);
+})
 
 //express app creation
 const app = express();
@@ -17,8 +29,10 @@ const app = express();
 // middleware
 app.use(express.json());
 app.use(cors({
-    origin: process.env.CLIENT_ORIGIN || "http://localhost:5173",
-    credentials: true
+    origin: process.env.CLIENT_ORIGIN || "https://auction-platform-nu.vercel.app",
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // routes
