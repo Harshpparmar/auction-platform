@@ -2,14 +2,21 @@ const Admin = require('../models/Admin');
 
 const createDefaultAdmin = async () => {
     try {
-        // Check if admin exists
-        const adminExists = await Admin.findOne({ email: 'admin@auction.com' });
+        const defaultAdminEmail = process.env.DEFAULT_ADMIN_EMAIL;
+        const defaultAdminPassword = process.env.DEFAULT_ADMIN_PASSWORD;
+
+        if (!defaultAdminEmail || !defaultAdminPassword) {
+            console.error('Default admin email or password not set in environment variables');
+            return;
+        }
+
+        const adminExists = await Admin.findOne({email: defaultAdminEmail});
 
         if (!adminExists) {
             // Create default admin
             await Admin.create({
-                email: 'admin@auction.com',
-                password: 'admin123' // Will be hashed 
+                email: defaultAdminEmail,
+                password: defaultAdminPassword // Will be hashed 
             });
             console.log('Default admin created successfully');
         } else {
